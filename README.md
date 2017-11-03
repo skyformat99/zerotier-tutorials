@@ -1,9 +1,13 @@
 ## ZeroTier Core Walkthrough
 ***
 
-In this document we are going to cover the steps necessary to build an application which utilizes the ZeroTier network virtualization engine. This type of integration is aimed at high performance or specialty applications which must control every aspect of the communication process. If you'd instead be satisfied with a less complex POSIX-like and easier to use socket API, see: [libzt](github.com/zerotier/libzt).
+In this document we are going to cover the steps necessary to build an application which utilizes the ZeroTier network virtualization engine. This type of integration is aimed at high performance or specialty applications which must control every aspect of the communication process. If you'd instead be satisfied with a less complex POSIX-like and easier to use socket API, see: [libzt](https://github.com/zerotier/libzt).
 
 For this type of integration, you'll need to create your own timing loop, specify callbacks for the virtual network functions, implement local file data storage and retreival routines for your platform and handle periodic Node state changes. You should take a look at the example [Service](Service.cpp) code for I will only be including the most relevant snippets in this document. There is more support code provided in the source files than I will show here.
+
+### Building the core
+
+Clone the [ZeroTierOne](https://github.com/zerotier/ZeroTierOne) repo. `make core`. link the resultant `libzerotiercore.a` with this application.
 
 ### Bringing your node online
 
@@ -34,7 +38,7 @@ Not shown here, see source
 
 #### Handling Node events and state changes
 
-Information about the various node events can be found in [ZeroTierOne.h](ZeroTierOne.h)
+Information about the various node events can be found in [ZeroTierOne.h](zto/include/ZeroTierOne.h)
 
 ```
 inline void Service::nodeEventCallback(enum ZT_Event event,const void *metaData)
