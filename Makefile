@@ -5,5 +5,5 @@ INCLUDES=-Izto/node -Izto/osdep -Izto/include -Izto/ext/json
 clean:
 	rm -rf service
 
-all:
+service:
 	$(CXX) $(CFLAGS) $(INCLUDES) Service.cpp main.cpp -L. -lzerotiercore -o service
