@@ -7,7 +7,14 @@ For this type of integration, you'll need to create your own timing loop, specif
 
 ### Building the core
 
-Clone the [ZeroTierOne](https://github.com/zerotier/ZeroTierOne) repo. `make core`. link the resultant `libzerotiercore.a` with this application.
+```
+git submodule init
+git submodule update
+cd zto
+make core
+```
+
+You'll then link the example application with the resultant `zto/libzerotiercore.a` via `make service`
 
 ### Bringing your node online
 
